@@ -3,10 +3,9 @@ package com.tomuta.swenoop.DB;
 
 //taken from https://mkyong.com/jdbc/how-do-connect-to-postgresql-with-jdbc-driver-java/
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class JDBCExample {
 
@@ -24,6 +23,34 @@ public class JDBCExample {
         } else {
             System.out.println("Failed to make connection!");
         }
+        //Creating a Statement object
+        Statement stmt = conn.createStatement();
+        //Register user
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter Username: ");
+        String input1 = scanner.nextLine();
+
+        System.out.println("Gib einen Integer-Wert ein: ");
+        int input2 = scanner.nextInt();
+
+        System.out.println("Deine Eingaben: " + input1 + ",  " + input2);
+        PreparedStatement statement = conn.prepareStatement("INSERT INTO \"MonsterTradingCardGame\" (\"ID\", \"Username\") VALUES ( ?, ?)");
+        statement.setString(2, input1);
+        statement.setInt(1, input2);
+        statement.execute();
+        //Retrieving the data
+        ResultSet rs = stmt.executeQuery("SELECT \"ID\", \"Username\"\n" +
+                "\tFROM public.\"MonsterTradingCardGame\";");
+
+        System.out.println("Contents of the table");
+        while(rs.next()) {
+            System.out.print("Username: " + rs.getString("Username") + ", ");
+            System.out.print("ID: " + rs.getInt("ID"));
+            System.out.println("");
+        }
+
 
 
 
