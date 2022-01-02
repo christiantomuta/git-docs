@@ -8,10 +8,25 @@ import lombok.Setter;
 
 public class Monster extends Card{
 
-    private String monster_type;
-
-    public Monster(String monster_type, int damage, element_type elem) {
-        super(damage, elem);
-        this.monster_type = monster_type;
+    public enum monster_type{
+        Goblin,
+        Troll,
+        Ork,
+        Kraken,
+        Knight,
+        Dragon,
+        Elf
     }
+    private Monster.monster_type mons;
+
+
+
+    public Monster(monster_type mons, int damage, element_type elem) {
+        super(damage, elem);
+        this.mons = mons;
+
+    }
+
+
+
 }

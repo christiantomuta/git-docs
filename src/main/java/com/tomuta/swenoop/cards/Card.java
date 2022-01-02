@@ -10,15 +10,19 @@ public class Card {
 
     private static int damage;
     public enum element_type{
-        fire,
-        water,
-        normal
+        Fire,
+        Water,
+        Normal
     }
+    private String card_type;
     private element_type elem;
     public Card(int damage, element_type elem){
 
         this.damage = damage;
         this.elem = elem;
+    }
+    public void printCard(element_type elem){
+        System.out.println(elem);
     }
 
     public static int getDamage(){
