@@ -9,29 +9,42 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class MonstervsMonster {
-    public static String Monsterfight(Monster card1, Monster card2){
+public class Fight {
+    public static String Specialitychecker(Monster card1, Monster card2){
+
         String type1 = card1.getMons().name();
         String type2 = card2.getMons().name();
         String type3 = "weder noch";
+
+
         if (type1.equals("Goblin") && type2.equals("Dragon")) {
-            return type1;
+            return "PlayerA";
         }
         else if (type2.equals("Goblin") && type1.equals("Dragon")){
-            return type2;
+            return "PlayerB";
         }
         else if (type1.equals("Wizard") && type1.equals("Ork")){
-            return type1;
+            return "PlayerA";
         }
         else if (type2.equals("Wizard") && type1.equals("Ork")){
-            return type2;
+            return "PlayerB";
         }
         else if (type1.equals("Kraken")){
-            return type1;
+            return "PlayerA";
         }
         else if (type2.equals("Kraken")){
-            return type2;
+            return "PlayerB";
         }
+
         return type3;
+    }
+
+    public static void Damagesetter_Monster(Monster card1, Monster card2){
+        int damage;
+        String type1 = card1.getMons().name();
+        String type2 = card2.getMons().name();
+        String type3 = card1.getElem().name();
+        String type4 = card2.getElem().name();
+
     }
 }

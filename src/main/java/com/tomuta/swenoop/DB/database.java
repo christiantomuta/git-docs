@@ -6,8 +6,10 @@ package com.tomuta.swenoop.DB;
 import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
-public class JDBCExample {
+public class database {
 
     public static void main(String[] args) throws SQLException {
 
@@ -50,6 +52,8 @@ public class JDBCExample {
             System.out.print("ID: " + rs.getInt("ID"));
             System.out.println("");
         }
+
+        
 
 
 

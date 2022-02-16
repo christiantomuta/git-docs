@@ -12,8 +12,9 @@ public class Card {
     public enum element_type{
         Fire,
         Water,
-        Normal
+        Regular
     }
+
     private String card_type;
     private element_type elem;
     public Card(int damage, element_type elem){

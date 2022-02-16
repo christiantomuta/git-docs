@@ -3,7 +3,7 @@ package com.tomuta.swenoop;
 import com.tomuta.swenoop.cards.Card;
 import com.tomuta.swenoop.cards.Monster;
 import com.tomuta.swenoop.cards.Spell;
-import com.tomuta.swenoop.Fight.MonstervsMonster;
+import com.tomuta.swenoop.Fight.Fight;
 import java.lang.String;
 
 public class Main {
@@ -16,7 +16,7 @@ public class Main {
         String jo = card3.getElem().name() + card3.getCard_type();
         System.out.println(jo);
         Monster card5 = new Monster(Monster.monster_type.Dragon, 111, Card.element_type.Fire);
-        String winner = MonstervsMonster.Monsterfight(card4, card5);
+        String winner =  Fight.Specialitychecker(card4, card5);
         System.out.println(winner);
 
 
