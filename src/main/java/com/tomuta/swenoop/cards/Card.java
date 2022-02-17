@@ -1,5 +1,5 @@
 package com.tomuta.swenoop.cards;
-
+import java.util.Random;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +8,11 @@ import lombok.Setter;
 
 public class Card {
 
-    private static int damage;
+    Random rand = new Random();
+    int upperbound = 50;
+    public int damage = rand.nextInt(upperbound);
+
+
     public enum element_type{
         Fire,
         Water,
@@ -26,7 +30,7 @@ public class Card {
         System.out.println(elem);
     }
 
-    public static int getDamage(){
+    public int getDamage(){
         return damage;
     }
 }

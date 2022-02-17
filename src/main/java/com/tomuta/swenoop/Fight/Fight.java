@@ -39,12 +39,8 @@ public class Fight {
         return type3;
     }
 
-    public static void Damagesetter_Monster(Monster card1, Monster card2){
-        int damage;
-        String type1 = card1.getMons().name();
-        String type2 = card2.getMons().name();
-        String type3 = card1.getElem().name();
-        String type4 = card2.getElem().name();
+    public static void damage_calculator(Monster card1, Monster card2){
+
 
     }
 }
