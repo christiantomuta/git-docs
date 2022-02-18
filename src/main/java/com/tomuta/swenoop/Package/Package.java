@@ -6,9 +6,22 @@ import com.tomuta.swenoop.cards.Spell;
 
 import java.lang.String;
 import java.util.Random;
+import java.sql.*;
 
 public class Package {
-    public void five_cards_generator() {
+    public Card one_card_generator(){
+        Random cardfinder = new Random();
+        int kinds = 2;
+        int kind_decider = cardfinder.nextInt(kinds);
+        if(kind_decider == 0) {
+            return new Card(345, Card.element_type.Fire);
+        }else{
+            return new Card(123, Card.element_type.Fire);
+        }
+    }
+
+    /*public Card five_cards_generator() {
+
         for (int i = 0; i < 5; i++) {
             Random cardfinder = new Random();
             Random damage_creator = new Random();
@@ -26,17 +39,21 @@ public class Package {
                 if (element_decider == 0) {
                     Spell card = new Spell(damage_creator.nextInt(damage_upper), Card.element_type.Water);
                     String temp = card.getElem().name() + card.getCard_type() + card.getDamage();
+
                     System.out.println(temp);
+                    return card;
                 }
                 if (element_decider == 1) {
-                    Spell card10 = new Spell(damage_creator.nextInt(damage_upper), Card.element_type.Fire);
-                    String temp = card10.getElem().name() + card10.getCard_type() + card10.getDamage();
+                    Spell card = new Spell(damage_creator.nextInt(damage_upper), Card.element_type.Fire);
+                    String temp = card.getElem().name() + card.getCard_type() + card.getDamage();
                     System.out.println(temp);
+                    return card;
                 }
                 if (element_decider == 2) {
-                    Spell card10 = new Spell(damage_creator.nextInt(damage_upper), Card.element_type.Regular);
-                    String temp = card10.getElem().name() + card10.getCard_type() + card10.getDamage();
+                    Spell card = new Spell(damage_creator.nextInt(damage_upper), Card.element_type.Regular);
+                    String temp = card.getElem().name() + card.getCard_type() + card.getDamage();
                     System.out.println(temp);
+                    return card;
                 }
             } else {
                 if (monster_decider == 0) {
@@ -44,16 +61,19 @@ public class Package {
                         Monster card = new Monster(Monster.monster_type.Goblin, damage_creator.nextInt(damage_upper), Card.element_type.Fire);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 1) {
                         Monster card = new Monster(Monster.monster_type.Goblin, damage_creator.nextInt(damage_upper), Card.element_type.Water);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 2) {
                         Monster card = new Monster(Monster.monster_type.Goblin, damage_creator.nextInt(damage_upper), Card.element_type.Regular);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                 }
                 if (monster_decider == 1) {
@@ -61,16 +81,20 @@ public class Package {
                         Monster card = new Monster(Monster.monster_type.Elf, damage_creator.nextInt(damage_upper), Card.element_type.Fire);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 1) {
                         Monster card = new Monster(Monster.monster_type.Elf, damage_creator.nextInt(damage_upper), Card.element_type.Water);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
+
                     }
                     if (element_decider == 2) {
                         Monster card = new Monster(Monster.monster_type.Elf, damage_creator.nextInt(damage_upper), Card.element_type.Regular);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                 }
                 if (monster_decider == 2) {
@@ -78,16 +102,19 @@ public class Package {
                         Monster card = new Monster(Monster.monster_type.Troll, damage_creator.nextInt(damage_upper), Card.element_type.Fire);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 1) {
                         Monster card = new Monster(Monster.monster_type.Troll, damage_creator.nextInt(damage_upper), Card.element_type.Water);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 2) {
                         Monster card = new Monster(Monster.monster_type.Troll, damage_creator.nextInt(damage_upper), Card.element_type.Regular);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                 }
                 if (monster_decider == 3) {
@@ -95,6 +122,7 @@ public class Package {
                         Monster card = new Monster(Monster.monster_type.Ork, damage_creator.nextInt(damage_upper), Card.element_type.Fire);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 1) {
                         Monster card = new Monster(Monster.monster_type.Ork, damage_creator.nextInt(damage_upper), Card.element_type.Water);
@@ -105,6 +133,7 @@ public class Package {
                         Monster card = new Monster(Monster.monster_type.Ork, damage_creator.nextInt(damage_upper), Card.element_type.Regular);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                 }
                 if (monster_decider == 4) {
@@ -112,16 +141,19 @@ public class Package {
                         Monster card = new Monster(Monster.monster_type.Kraken, damage_creator.nextInt(damage_upper), Card.element_type.Fire);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 1) {
                         Monster card = new Monster(Monster.monster_type.Kraken, damage_creator.nextInt(damage_upper), Card.element_type.Water);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 2) {
                         Monster card = new Monster(Monster.monster_type.Kraken, damage_creator.nextInt(damage_upper), Card.element_type.Regular);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                 }
                 if (monster_decider == 5) {
@@ -129,16 +161,19 @@ public class Package {
                         Monster card = new Monster(Monster.monster_type.Knight, damage_creator.nextInt(damage_upper), Card.element_type.Fire);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 1) {
                         Monster card = new Monster(Monster.monster_type.Knight, damage_creator.nextInt(damage_upper), Card.element_type.Water);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 2) {
                         Monster card = new Monster(Monster.monster_type.Knight, damage_creator.nextInt(damage_upper), Card.element_type.Regular);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                 }
                 if (monster_decider == 6) {
@@ -146,19 +181,22 @@ public class Package {
                         Monster card = new Monster(Monster.monster_type.Dragon, damage_creator.nextInt(damage_upper), Card.element_type.Fire);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 1) {
                         Monster card = new Monster(Monster.monster_type.Dragon, damage_creator.nextInt(damage_upper), Card.element_type.Water);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                     if (element_decider == 2) {
                         Monster card = new Monster(Monster.monster_type.Dragon, damage_creator.nextInt(damage_upper), Card.element_type.Regular);
                         String temp = card.getElem().name() + card.getMons().name() + card.getDamage();
                         System.out.println(temp);
+                        return card;
                     }
                 }
             }
         }
-    }
+    }*/
 }

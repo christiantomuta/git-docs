@@ -6,8 +6,7 @@ package com.tomuta.swenoop.DB;
 import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class database {
 
@@ -38,18 +37,18 @@ public class database {
         int input2 = scanner.nextInt();
 
         System.out.println("Deine Eingaben: " + input1 + ",  " + input2);
-        PreparedStatement statement = conn.prepareStatement("INSERT INTO \"MonsterTradingCardGame\" (\"ID\", \"Username\") VALUES ( ?, ?)");
-        statement.setString(2, input1);
-        statement.setInt(1, input2);
+        PreparedStatement statement = conn.prepareStatement("INSERT INTO \"Package\" (\"type\", \"damage\") VALUES ( ?, ?)");
+        statement.setString(1, input1);
+        statement.setInt(2, input2);
         statement.execute();
         //Retrieving the data
-        ResultSet rs = stmt.executeQuery("SELECT \"ID\", \"Username\"\n" +
-                "\tFROM public.\"MonsterTradingCardGame\";");
+        ResultSet rs = stmt.executeQuery("SELECT \"type\", \"damage\"\n" +
+                "\tFROM public.\"Package\";");
 
         System.out.println("Contents of the table");
         while(rs.next()) {
-            System.out.print("Username: " + rs.getString("Username") + ", ");
-            System.out.print("ID: " + rs.getInt("ID"));
+            System.out.print("type: " + rs.getString("type") + ", ");
+            System.out.print("damage: " + rs.getInt("damage"));
             System.out.println("");
         }
 

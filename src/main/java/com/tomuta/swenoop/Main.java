@@ -11,17 +11,24 @@ public class Main {
     public static void main(String[] args) {
         int uppermost_damage = 90;
         Random rand = new Random();
-        Spell card3 = new Spell(rand.nextInt(uppermost_damage), Card.element_type.Fire);
+        //Spell card3 = new Spell(rand.nextInt(uppermost_damage), Card.element_type.Fire);
         Monster card4 = new Monster(Monster.monster_type.Goblin, rand.nextInt(uppermost_damage), Card.element_type.Water);
         String ja = card4.getElem().name() + card4.getMons().name() + card4.getDamage();
         System.out.println(ja);
-        String jo = card3.getElem().name() + card3.getCard_type();
-        System.out.println(jo);
+        //String jo = card3.getElem().name() + card3.getCard_type();
+        //System.out.println(jo);
         Monster card5 = new Monster(Monster.monster_type.Dragon, 111, Card.element_type.Fire);
         String winner =  Fight.Specialitychecker(card4, card5);
         System.out.println(winner);
         Package pack = new Package();
-        pack.five_cards_generator();
+        Card card10 = (Card) pack.one_card_generator();
+        String test = card10.getElem().name()  + card10.getMons() + card10.getDamage();
+        //String test2 = card10.getElem().name() + card10.getCard_type() + card10.getDamage();
+        System.out.println(card10.getMons());
+        System.out.println(test);
+        //System.out.println(test2);
+        //pack.five_cards_generator();
+
 
 
 
