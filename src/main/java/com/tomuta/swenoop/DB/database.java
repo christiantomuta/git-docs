@@ -6,6 +6,8 @@ package com.tomuta.swenoop.DB;
 import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
+import com.tomuta.swenoop.Package.Package;
+import com.tomuta.swenoop.cards.Card;
 
 
 public class database {
@@ -28,16 +30,22 @@ public class database {
         Statement stmt = conn.createStatement();
         //Register user
 
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
+        PreparedStatement statement = conn.prepareStatement("INSERT INTO \"Package\" (\"type\", \"damage\") VALUES ( ?, ?)");
+        //String test =  card10.getElem() + card10.getCard_type() + card10.getDamage();
+        Package pack = new Package();
+        Card card = pack.one_card_generator();
 
-        System.out.println("Enter Username: ");
+        /*System.out.println("Enter Username: ");
         String input1 = scanner.nextLine();
 
         System.out.println("Gib einen Integer-Wert ein: ");
-        int input2 = scanner.nextInt();
+        int input2 = scanner.nextInt();*/
+        String input1 = card.getElem() + card.getCard_type();
+        int input2 = card.getDamage();
 
         System.out.println("Deine Eingaben: " + input1 + ",  " + input2);
-        PreparedStatement statement = conn.prepareStatement("INSERT INTO \"Package\" (\"type\", \"damage\") VALUES ( ?, ?)");
+        //PreparedStatement statement = conn.prepareStatement("INSERT INTO \"Package\" (\"type\", \"damage\") VALUES ( ?, ?)");
         statement.setString(1, input1);
         statement.setInt(2, input2);
         statement.execute();

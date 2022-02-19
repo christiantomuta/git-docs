@@ -22,6 +22,10 @@ public class Card {
 
     //private Monster.monster_type card_type;
     private element_type elem;
+    private static String card_type;
+    public static String getCard_type() {
+        return card_type;
+    }
 
     /*public Card(Monster.monster_type card_type, int damage, element_type elem){
         this.card_type = card_type;
@@ -36,10 +40,14 @@ public class Card {
         this.card_type = spell;
 
     };*/
-    public Card(int damage, element_type elem){
+    public Card(String card_type, int damage, element_type elem){
 
         this.damage = damage;
         this.elem = elem;
+        if(Monster. getMons_type() != null) {
+            Card.card_type = Monster.getCard_type();
+        }else{
+            Card.card_type = Spell.getCard_type();}
     }
 
 

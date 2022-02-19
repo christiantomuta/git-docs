@@ -8,6 +8,8 @@ import lombok.Setter;
 
 public class Monster extends Card{
 
+
+
     public enum monster_type{
         Goblin,
         Troll,
@@ -15,15 +17,29 @@ public class Monster extends Card{
         Kraken,
         Knight,
         Dragon,
-        Elf
+        Elf,
+        Spell
     }
-    private Monster.monster_type mons;
+    private static Monster.monster_type mons;
+    private static String card_type = "";
+    public static void setMonster_type(Monster.monster_type mons){
+        Monster.mons = mons;
+    }
+
+    public static String getMons_type() {
+        return mons.toString();
+    }
+    public static String getCard_type() {
+        return mons.toString();
+    }
 
 
 
-    public Monster(monster_type mons, int damage, element_type elem) {
-        super(damage, elem);
-        this.mons = mons;
+
+
+    public Monster(String card_type, int damage, element_type elem) {
+        super(card_type, damage, elem);
+        Monster.card_type = card_type;
 
     }
 
