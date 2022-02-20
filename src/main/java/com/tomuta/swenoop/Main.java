@@ -1,11 +1,17 @@
 package com.tomuta.swenoop;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Random;
+
+import com.tomuta.swenoop.DB.database;
+import com.tomuta.swenoop.Packagehandler.Packagehandler;
 import com.tomuta.swenoop.cards.Card;
 import com.tomuta.swenoop.cards.Monster;
 import com.tomuta.swenoop.cards.Spell;
 import com.tomuta.swenoop.Fight.Fight;
 import java.lang.String;
 import com.tomuta.swenoop.Package.Package;
+import com.tomuta.swenoop.DB.getConnection;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,7 +34,14 @@ public class Main {
         System.out.println(test);
         //System.out.println(test2);
         //pack.five_cards_generator();
-
+        /*getConnection conn = new getConnection();
+        try{
+            Connection connection = conn.connect_to_database();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+        Packagehandler packk = new Packagehandler();
+        packk.handle_package_to_user();
 
 
 

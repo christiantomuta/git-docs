@@ -50,15 +50,17 @@ public class database {
         statement.setInt(2, input2);
         statement.execute();
         //Retrieving the data
-        ResultSet rs = stmt.executeQuery("SELECT \"type\", \"damage\"\n" +
+        ResultSet rs = stmt.executeQuery("SELECT \"type\", \"damage\", \"Cardid\"\n" +
                 "\tFROM public.\"Package\";");
 
         System.out.println("Contents of the table");
         while(rs.next()) {
+            System.out.print("Cardid: " + rs.getInt("Cardid") + ", ");
             System.out.print("type: " + rs.getString("type") + ", ");
             System.out.print("damage: " + rs.getInt("damage"));
             System.out.println("");
         }
+
 
         
 
