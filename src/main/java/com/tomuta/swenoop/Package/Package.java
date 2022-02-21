@@ -1,8 +1,6 @@
 package com.tomuta.swenoop.Package;
 
 import com.tomuta.swenoop.cards.Card;
-import com.tomuta.swenoop.cards.Monster;
-import com.tomuta.swenoop.cards.Spell;
 
 import java.util.Random;
 
@@ -19,7 +17,7 @@ public class Package {
         int element_decider = elem_type.nextInt(element_types);
         int monster_decider = mons_type.nextInt(monster_types);
         int kind_decider = cardfinder.nextInt(kinds);
-
+        /*
         if (kind_decider == 0) {
             if (monster_decider == 0) {
                 Monster.setMonster_type(Monster.monster_type.Elf);
@@ -117,7 +115,11 @@ public class Package {
                 return new Card(Card.getCard_type(), damage_creator.nextInt(damage_upper), Card.element_type.Regular);
             }
         }
+
         return new Card("Spell", 666, Card.element_type.Regular);
+
+         */
+        return new Card();
     }
 
     /*public Card five_cards_generator() {

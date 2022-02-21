@@ -1,14 +1,25 @@
 package com.tomuta.swenoop.Packagehandler;
-
+import java.util.*;
 import java.sql.*;
-import java.util.Properties;
-import java.util.Scanner;
 
 import com.tomuta.swenoop.Package.Package;
 import com.tomuta.swenoop.cards.Card;
 import com.tomuta.swenoop.DB.getConnection;
 
 public class Packagehandler {
+
+    public static List<Card> GeneratePackage(UUID buyer){
+        Random rand = new Random();
+        List<Card> card_package = new ArrayList<Card>();
+        for (int i = 0; i < 5; i++) {
+            int damage = rand.nextInt(51);
+            Card.ECard_type type = Card.ECard_type.values()[rand.nextInt(8)];
+            Card.element_type element = Card.element_type.values()[rand.nextInt(3)];
+            card_package.add(new Card(UUID.randomUUID(), buyer, type, damage, element));
+        }
+        return card_package;
+    }
+    /*
     public void handle_package_to_user() {
         System.out.println("Here are five randomly generated cards.");
         getConnection conn = new getConnection();
@@ -87,11 +98,13 @@ public class Packagehandler {
 
 
 
-
+/*
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
     }
+
+ */
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTests {
+    /*
     User user;
     @BeforeEach
     void beforeEachFunction(){
@@ -18,5 +19,7 @@ public class UserTests {
         assertEquals(user2.getCoins(), 345);
 
     }
+
+     */
 
 }

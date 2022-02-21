@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class getConnection {
-    public Connection connect_to_database(){
+    public static Connection connect_to_database(){
         String name,pass,url;
         Connection con = null;
         try {
@@ -18,7 +18,6 @@ public class getConnection {
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     return con;
     }
 

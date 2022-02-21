@@ -1,8 +1,6 @@
 package com.tomuta.swenoop.Fight;
 
 import com.tomuta.swenoop.cards.Card;
-import com.tomuta.swenoop.cards.Monster;
-import com.tomuta.swenoop.cards.Spell;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,14 +8,13 @@ import lombok.Setter;
 @Setter
 
 public class Fight {
-    public static String Specialitychecker(Monster card1, Monster card2){
+    public static String Specialitychecker(Card card1, Card card2){
 
-        String type1 = card1.getMons().name();
-        String type2 = card2.getMons().name();
-        String type3 = "weder noch";
+        Card.ECard_type type1 = card1.getCard_type();
+        Card.ECard_type type2 = card2.getCard_type();
 
 
-        if (type1.equals("Goblin") && type2.equals("Dragon")) {
+        if (type1.equals(Card.ECard_type.Dragon) && type2.equals("Dragon")) {
             return "PlayerA";
         }
         else if (type2.equals("Goblin") && type1.equals("Dragon")){
@@ -36,10 +33,10 @@ public class Fight {
             return "PlayerB";
         }
 
-        return type3;
+        return null;
     }
 
-    public static void damage_calculator(Monster card1, Monster card2){
+    public static void damage_calculator(Card card1, Card card2){
 
 
     }

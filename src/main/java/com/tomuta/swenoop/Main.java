@@ -1,20 +1,30 @@
 package com.tomuta.swenoop;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.io.IOException;
 import java.util.Random;
 
-import com.tomuta.swenoop.DB.database;
 import com.tomuta.swenoop.Packagehandler.Packagehandler;
 import com.tomuta.swenoop.cards.Card;
-import com.tomuta.swenoop.cards.Monster;
-import com.tomuta.swenoop.cards.Spell;
-import com.tomuta.swenoop.Fight.Fight;
+
 import java.lang.String;
 import com.tomuta.swenoop.Package.Package;
-import com.tomuta.swenoop.DB.getConnection;
+import com.tomuta.swenoop.server.MCTGApp;
+import com.tomuta.swenoop.server.Server;
 
 public class Main {
     public static void main(String[] args) {
+
+        Server server = new Server(10001,MCTGApp.GetInstance());
+        try{
+            server.start();
+        }catch (IOException e)
+        {
+            System.out.println("Encountered unexpected IOException");
+            System.out.println("ABORT!");
+        }
+
+
+        /*Server s = new Server();
+
         int uppermost_damage = 90;
         Random rand = new Random();
         //Spell card3 = new Spell(rand.nextInt(uppermost_damage), Card.element_type.Fire);
@@ -40,8 +50,10 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }*/
+        /*
         Packagehandler packk = new Packagehandler();
         packk.handle_package_to_user();
+        */
 
 
 

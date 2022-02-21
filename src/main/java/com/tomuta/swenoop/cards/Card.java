@@ -1,17 +1,62 @@
 package com.tomuta.swenoop.cards;
 import java.util.Random;
+import java.util.UUID;
+
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 
 public class Card {
 
-    Random rand = new Random();
-    int upperbound = 50;
-    private Monster.monster_type mons;
-    public int damage = rand.nextInt(upperbound);
+    public Card()
+    {}
+
+    private UUID Id;
+    private String description;
+    private UUID Owner;
+    private boolean inDeck;
+
+    public Card(UUID id, UUID owner, ECard_type card_type, int damage, element_type elem) {
+        Id = UUID.randomUUID();
+        this.description = ""; //Je nach card type -> switch
+        Owner = owner;
+        inDeck = false;
+        this.card_type = card_type;
+        this.damage = damage;
+        this.elem = elem;
+    }
+
+    public Card(UUID id, String description, UUID owner, boolean inDeck, ECard_type card_type, int damage, element_type elem) {
+        Id = id;
+        this.description = description;
+        Owner = owner;
+        this.inDeck = inDeck;
+        this.card_type = card_type;
+        this.damage = damage;
+        this.elem = elem;
+    }
+
+    public enum ECard_type{
+        Goblin,
+        Troll,
+        Ork,
+        Kraken,
+        Knight,
+        Dragon,
+        Elf,
+        Spell
+    }
+
+    //Random rand = new Random();
+    //int upperbound = 50;
+
+
+    private ECard_type card_type;
+    public int damage;
 
 
     public enum element_type{
@@ -22,33 +67,11 @@ public class Card {
 
     //private Monster.monster_type card_type;
     private element_type elem;
-    private static String card_type;
-    public static String getCard_type() {
+
+    public ECard_type getCard_type() {
         return card_type;
     }
 
-    /*public Card(Monster.monster_type card_type, int damage, element_type elem){
-        this.card_type = card_type;
-        this.damage = damage;
-        this.elem = elem;
-
-    };
-    public Card(String spell, int damage, element_type elem){
-
-        this.damage = damage;
-        this.elem = elem;
-        this.card_type = spell;
-
-    };*/
-    public Card(String card_type, int damage, element_type elem){
-
-        this.damage = damage;
-        this.elem = elem;
-        if(Monster. getMons_type() != null) {
-            Card.card_type = Monster.getCard_type();
-        }else{
-            Card.card_type = Spell.getCard_type();}
-    }
 
 
     public void printCard(element_type elem){

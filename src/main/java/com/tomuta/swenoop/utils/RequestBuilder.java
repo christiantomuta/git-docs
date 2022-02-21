@@ -10,6 +10,7 @@ import java.util.Locale;
 public class RequestBuilder {
     static final String CONTENT_TYPE = "Content-Type: ";
     static final String CONTENT_LENGTH = "Content-Length: ";
+    static final String AUTH = "Authorization: ";
 
     public static Request buildRequest(BufferedReader in) throws IOException {
         String line = in.readLine();
@@ -31,6 +32,9 @@ public class RequestBuilder {
                 }
                 if (line.startsWith(CONTENT_TYPE)) {
                     request.setContentType(getContentType(line));
+                }
+                if (line.startsWith(AUTH)) {
+                    request.setAuth(getContentType(line));
                 }
             }
 
