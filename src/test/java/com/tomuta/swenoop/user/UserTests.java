@@ -1,25 +1,35 @@
 package com.tomuta.swenoop.user;
 
 import org.junit.jupiter.api.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class UserTests {
-    /*
+
+
+
     User user;
     @BeforeEach
     void beforeEachFunction(){
-        user = new User("Chris", "pw", 150);
+        user = new User("Chris","pw");
     }
 
     @Test
-    void testFunction(){
-        User user2 = new User("das", "dies", 666);
-        user2.setCoins(345);
-        assertEquals(user2.getCoins(), 345);
-
+    void testCoins(){
+        User user = new User("Lukas", "Aichbauer");
+        assertEquals(user.getCoins(), 20);
+    }
+    @Test
+    void testUserNameGetter(){
+        User user = new User("Christian", "dies");
+        assertEquals(user.getUsername(), "Christian");
     }
 
-     */
+    @Test
+    void testEloValue(){
+        User user = new User("Lukas", "Aichbauer");
+        assertEquals(user.getElo(), 100);
+    }
+
 
 }
