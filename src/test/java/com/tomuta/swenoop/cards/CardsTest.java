@@ -30,4 +30,10 @@ public class CardsTest {
         UUID temp_ID = UUID.randomUUID();
         assertNotEquals(temp_ID, UUID.randomUUID());
     }
+
+    @Test
+    void testElement_type_SetterAndGetter(){
+        assertEquals(Card.element_type.Water, card.getElem());
+    }
+
 }
