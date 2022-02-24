@@ -6,14 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTests {
 
-
-
-    User user;
-    @BeforeEach
-    void beforeEachFunction(){
-        user = new User("Chris","pw");
-    }
-
     @Test
     void testCoins(){
         User user = new User("Lukas", "Aichbauer");
@@ -30,6 +22,5 @@ public class UserTests {
         User user = new User("Lukas", "Aichbauer");
         assertEquals(user.getElo(), 100);
     }
-
 
 }

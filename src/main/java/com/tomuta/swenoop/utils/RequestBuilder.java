@@ -20,7 +20,6 @@ public class RequestBuilder {
             String[] splitFirstLine = line.split(" ");
             Boolean hasParams = splitFirstLine[1].indexOf("?") != -1;
 
-
             request.setMethod(getMethod(splitFirstLine));
             request.setPathname(getPathname(splitFirstLine, hasParams));
             request.setParams(getParams(splitFirstLine, hasParams));
@@ -47,7 +46,6 @@ public class RequestBuilder {
                 }
             }
         }
-
         return request;
     }
 

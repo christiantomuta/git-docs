@@ -12,7 +12,6 @@ public class CardsTest {
     @BeforeEach
     void beforeEachFunction(){
         card = new Card(UUID.randomUUID(), UUID.randomUUID(), Card.ECard_type.Goblin, 50, Card.element_type.Water);
-
     }
 
     @Test

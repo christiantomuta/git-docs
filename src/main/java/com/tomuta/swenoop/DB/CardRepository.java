@@ -1,12 +1,11 @@
 package com.tomuta.swenoop.DB;
 
 import com.tomuta.swenoop.cards.Card;
-import com.tomuta.swenoop.user.User;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -74,6 +73,101 @@ public class CardRepository implements IRepository<Card> {
             return null;
         }
     }
+
+    public List<Card> getCardsByUser(UUID id) {
+        try {
+
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM cards WHERE user_id=?");
+            statement.setString(1, id.toString());
+
+            var resultSet = statement.executeQuery();
+
+            List<Card> res = new ArrayList<>();
+            while(resultSet.next()) {
+                res.add(new Card(UUID.fromString(resultSet.getString("card_id")),
+                        resultSet.getString("card_description"),
+                        UUID.fromString(resultSet.getString("user_id")),
+                        resultSet.getBoolean("inDeck"),
+                        Card.ECard_type.values()[resultSet.getInt("card_kind")],
+                        resultSet.getInt("damage"),
+                        Card.element_type.values()[resultSet.getInt("card_element")]));
+            }
+            return res;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
+    public List<Card> getDeckByUser(UUID id) {
+        try {
+
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM cards WHERE user_id=? AND inDeck=true");
+            statement.setString(1, id.toString());
+
+            var resultSet = statement.executeQuery();
+
+            List<Card> res = new ArrayList<>();
+            while(resultSet.next()) {
+                res.add(new Card(UUID.fromString(resultSet.getString("card_id")),
+                        resultSet.getString("card_description"),
+                        UUID.fromString(resultSet.getString("user_id")),
+                        resultSet.getBoolean("inDeck"),
+                        Card.ECard_type.values()[resultSet.getInt("card_kind")],
+                        resultSet.getInt("damage"),
+                        Card.element_type.values()[resultSet.getInt("card_element")]));
+            }
+            return res;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public boolean setUserDeck(UUID userId, List<String> cardIds) {
+        try {
+
+            //Check if cards are owned by the given user - do given cards belong to given user?
+            PreparedStatement statement;
+
+            for(var cardId : cardIds)
+            {
+                statement = connection.prepareStatement("SELECT * FROM cards WHERE user_id=? AND card_id=?");
+                statement.setString(1, userId.toString());
+                statement.setString(2, cardId); //is user and card ID the same as the data given to this method?
+                var resultSet = statement.executeQuery();
+                if(!resultSet.next())
+                {
+                    return false;
+                }
+            }
+
+            //Reset inDeck property of cards which are owned by the given user
+            statement = connection.prepareStatement("SELECT * FROM cards WHERE user_id=? AND inDeck=true");
+            statement.setString(1, userId.toString());
+
+            var resultSet = statement.executeQuery();
+
+            while(resultSet.next())
+            {
+                UUID card_id = UUID.fromString(resultSet.getString("card_id"));
+                statement = connection.prepareStatement("UPDATE cards SET inDeck=false WHERE card_id=?");
+                statement.setString(1, card_id.toString());
+                statement.execute(); //ERROR HANDLING -> revert? Transactions?
+            }
+
+            //Set new Deck
+            for(var cardId : cardIds)
+            {
+                statement = connection.prepareStatement("UPDATE cards SET inDeck=true WHERE card_id=?");
+                statement.setString(1, cardId.toString());
+                statement.execute();
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
     @Override
     public Card Add(Card toAdd) {

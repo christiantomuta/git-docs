@@ -48,12 +48,9 @@ public class Card {
         Knight,
         Dragon,
         Elf,
+        Wizard,
         Spell
     }
-
-    //Random rand = new Random();
-    //int upperbound = 50;
-
 
     private ECard_type card_type;
     public int damage;
@@ -65,20 +62,22 @@ public class Card {
         Regular
     }
 
-    //private Monster.monster_type card_type;
     private element_type elem;
 
     public ECard_type getCard_type() {
         return card_type;
     }
 
-
-
-    public void printCard(element_type elem){
-        System.out.println(elem);
-    }
-
     public int getDamage(){
         return damage;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "damage=" + damage +
+                ", card_type=" + card_type +
+                ", elem=" + elem +
+                '}';
     }
 }
